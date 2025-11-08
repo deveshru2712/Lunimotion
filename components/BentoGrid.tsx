@@ -1,5 +1,14 @@
 import { cn } from "@/lib/utils";
-import { Brain, Keyboard, SquareMousePointer } from "lucide-react";
+import {
+  Brain,
+  Framer,
+  Keyboard,
+  Paperclip,
+  Send,
+  SquareMousePointer,
+  User2,
+  Waypoints,
+} from "lucide-react";
 import { Separator } from "./ui/separator";
 
 export default function BentoGrid() {
@@ -23,8 +32,8 @@ export default function BentoGrid() {
             {/* first card */}
             <div className="flex h-90">
               <Card>
-                <CardHeader className="flex items-center gap-2.5">
-                  <Brain />
+                <CardHeader className="flex items-center gap-2">
+                  <Brain size={18} />
                   LLM Model Selector
                 </CardHeader>
                 <CardDescription>
@@ -40,8 +49,8 @@ export default function BentoGrid() {
             {/* second card */}
             <div className="flex h-90">
               <Card>
-                <CardHeader className="flex items-center gap-2.5">
-                  <SquareMousePointer />
+                <CardHeader className="flex items-center gap-2">
+                  <SquareMousePointer size={18} />
                   Text to workflow builder
                 </CardHeader>
                 <CardDescription>
@@ -55,7 +64,18 @@ export default function BentoGrid() {
             </div>
           </div>
 
-          <div className="col-span-2 flex h-80 border-t"></div>
+          <div className="col-span-2 flex h-80 border-t">
+            <Card>
+              <CardHeader className="flex items-center gap-2">
+                <Waypoints size={16} />
+                Native Tools Integration
+              </CardHeader>
+              <CardDescription>
+                Track real-time activity of agents with detailed records of
+                triggers, tools used, outcomes, and timestamps.
+              </CardDescription>
+            </Card>
+          </div>
         </main>
       </div>
     </div>
@@ -89,7 +109,9 @@ const CardHeader = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("text-left font-medium", className)}>{children}</div>
+    <div className={cn("text-left text-sm font-medium", className)}>
+      {children}
+    </div>
   );
 };
 
@@ -240,7 +262,7 @@ const ModelCard = () => {
 
 const FloatingModelCard = () => {
   return (
-    <div className="absolute top-0 -right-1/4 w-fit -translate-x-1/2 -translate-y-1/2 rounded-md border bg-white px-2 py-1">
+    <div className="absolute top-0 -right-1/5 w-fit -translate-x-1/2 -translate-y-1/3 rounded-md border bg-white px-2 py-1">
       <div className="flex h-full w-full flex-col items-center text-xs">
         <div className="flex w-full items-center justify-between gap-5">
           <span className="flex items-center gap-1">
@@ -278,9 +300,13 @@ const workflowdata = [
 
 const UserMessage = ({ text }: { text: string }) => {
   return (
-    <div className="flex w-full justify-end text-sm">
+    <div className="flex w-[calc(100%-20px)] items-start justify-end gap-2.5 text-sm">
       <div className="w-fit rounded-tl-xl rounded-tr-xl rounded-br-sm rounded-bl-xl bg-blue-500/90 px-4 py-2 text-white">
         {text}
+      </div>
+
+      <div className="rounded-full border p-2">
+        <User2 size={16} />
       </div>
     </div>
   );
@@ -288,8 +314,12 @@ const UserMessage = ({ text }: { text: string }) => {
 
 const AiMessage = ({ text }: { text: string }) => {
   return (
-    <div className="flex w-full justify-start text-sm">
-      <div className="w-fit rounded-tl-xl rounded-tr-xl rounded-br-xl rounded-bl-md bg-gray-200/40 px-4 py-2 text-black">
+    <div className="flex w-[calc(100%-20px)] items-start gap-2.5 text-sm">
+      <div className="rounded-full border p-2">
+        <Framer size={16} />
+      </div>
+
+      <div className="w-fit justify-start rounded-tl-xl rounded-tr-xl rounded-br-xl rounded-bl-md bg-gray-200/40 px-4 py-2 text-black">
         {text}
       </div>
     </div>
@@ -309,10 +339,17 @@ const WorkflowComponent = () => {
         )}
       </div>
 
-      <input
-        placeholder="Ask Notus AI"
-        className="w-full rounded-md border border-transparent bg-white px-4 py-2 shadow-[0_5px_20px_0_rgb(0,0,0,0.05)] [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom,#e5e7eb,#f3f4f6)_border-box] placeholder:text-xs focus:outline-none"
-      />
+      <div className="flex w-full justify-between rounded-md border border-transparent bg-white px-4 py-2 shadow-[0_5px_20px_0_rgb(0,0,0,0.05)] [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom,#e5e7eb,#f3f4f6)_border-box]">
+        <input
+          placeholder="Ask Notus AI"
+          className="placeholder:text-xs focus:outline-none"
+        />
+
+        <span className="flex items-center gap-2.5 text-gray-600">
+          <Paperclip size={16} />
+          <Send size={16} />
+        </span>
+      </div>
     </div>
   );
 };
