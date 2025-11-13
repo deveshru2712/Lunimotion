@@ -10,6 +10,7 @@ import {
   Waypoints,
 } from "lucide-react";
 import { Separator } from "./ui/separator";
+import Image from "next/image";
 
 export default function BentoGrid() {
   return (
@@ -64,6 +65,7 @@ export default function BentoGrid() {
             </div>
           </div>
 
+          {/* third card */}
           <div className="col-span-2 flex h-80 border-t">
             <Card>
               <CardHeader className="flex items-center gap-2">
@@ -74,6 +76,14 @@ export default function BentoGrid() {
                 Track real-time activity of agents with detailed records of
                 triggers, tools used, outcomes, and timestamps.
               </CardDescription>
+              <CardSkeleton className="relative bg-[radial-gradient(var(--color-neutral-200)_1px,_transparent_1px)] mask-radial-from-10% bg-size-[10px_10px]">
+                <Image
+                  src={"/image.png"}
+                  className="absolute z-50 object-cover"
+                  fill
+                  alt="preview_image"
+                />
+              </CardSkeleton>
             </Card>
           </div>
         </main>

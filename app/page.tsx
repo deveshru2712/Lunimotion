@@ -1,5 +1,5 @@
-import BentoGrid from "@/components/BentoGrid";
+import TypingEffect from "@/components/TypingEffect";
 
 export default function Home() {
-  return <BentoGrid />;
+  return <TypingEffect />;
 }
